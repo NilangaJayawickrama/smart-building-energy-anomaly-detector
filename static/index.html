@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Smart Building Energy Anomaly Detector
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css"
+    >
+</head>
+
+<body>
+
+    <main class="container">
+
+        <header>
+            <h1>
+                Smart Building Energy Anomaly Detector
+            </h1>
+
+            <p>
+                Detect unusual HVAC energy-consumption
+                patterns using machine learning.
+            </p>
+        </header>
+
+        <section class="card">
+
+            <h2>
+                Analyze Building Sensor Data
+            </h2>
+
+            <form id="prediction-form">
+
+                <div class="form-group">
+
+                    <label for="indoor_temperature">
+                        Indoor Temperature (°C)
+                    </label>
+
+                    <input
+                        id="indoor_temperature"
+                        type="number"
+                        step="0.1"
+                        value="22"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="outdoor_temperature">
+                        Outdoor Temperature (°C)
+                    </label>
+
+                    <input
+                        id="outdoor_temperature"
+                        type="number"
+                        step="0.1"
+                        value="10"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="humidity">
+                        Humidity (%)
+                    </label>
+
+                    <input
+                        id="humidity"
+                        type="number"
+                        step="0.1"
+                        value="45"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="occupancy">
+                        Occupancy
+                    </label>
+
+                    <input
+                        id="occupancy"
+                        type="number"
+                        value="30"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="hvac_power_kw">
+                        HVAC Power Consumption (kW)
+                    </label>
+
+                    <input
+                        id="hvac_power_kw"
+                        type="number"
+                        step="0.1"
+                        value="12"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit">
+                    Analyze Energy Usage
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <section class="card">
+
+            <h2>
+                Prediction Result
+            </h2>
+
+            <div id="result">
+                Submit a sensor reading to see the result.
+            </div>
+
+        </section>
+
+
+        <section class="card">
+
+            <div class="history-header">
+
+                <h2>
+                    Recent Predictions
+                </h2>
+
+                <button
+                    id="refresh-history"
+                    type="button"
+                >
+                    Refresh
+                </button>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Indoor °C</th>
+                            <th>Outdoor °C</th>
+                            <th>Humidity</th>
+                            <th>Occupancy</th>
+                            <th>HVAC kW</th>
+                            <th>Status</th>
+                            <th>Score</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="history"></tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="/static/app.js"></script>
+
+</body>
+</html>

@@ -7,6 +7,11 @@ from app.ml_service import AnomalyDetector
 from app.models import Prediction
 from app.schemas import SensorReading
 
+from pathlib import Path
+
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+
 
 Base.metadata.create_all(bind=engine)
 
@@ -15,8 +20,22 @@ app = FastAPI(
     version="1.0.0",
 )
 
+STATIC_DIR = Path("static")
+
+app.mount(
+    "/static",
+    StaticFiles(directory=STATIC_DIR),
+    name="static",
+)
+
 detector = AnomalyDetector()
 
+@app.get("/")
+def home():
+    return FileResponse(
+        STATIC_DIR / "index.html"
+    )
+    
 
 @app.get("/health")
 def health():
